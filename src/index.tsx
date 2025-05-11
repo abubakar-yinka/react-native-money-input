@@ -7,9 +7,11 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import type { TextInputProps } from 'react-native';
+import type { TextInput, TextInputProps } from 'react-native';
 import { findNodeHandle } from 'react-native';
-import { NativeModules, Platform, TextInput } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
+import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
+
 import type { MaskOptions } from './types';
 
 const LINKING_ERROR =
@@ -176,8 +178,8 @@ export const MoneyTextInput = forwardRef<TextInput, MoneyTextInputProps>(
     );
 
     return (
-      <TextInput
-        ref={inputRef}
+      <BottomSheetTextInput
+        ref={inputRef as any}
         keyboardType="numeric"
         {...props}
         onChangeText={changeValueHandler}
